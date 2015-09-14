@@ -14,53 +14,70 @@ Status: Complete
 using namespace std;
 
 class CPackage {
+private:
+    float fee_;
+    float hours_;
+    int addFee_;
+    char id_;
 public:
-    float fee;
-    float hours;
-    int addFee;
-    char id;
     CPackage();
-    CPackage(char c);
-    void setPlan(float userFee, float userHours, int userAddFee, char userId);
+    CPackage(char c, bool& packValidation);
+    void setPlan(char c);
+    float getFee() {return fee_;}
+    float getHours() {return hours_;}
+    int getAddFee() {return addFee_;}
+    char getId() {return id_;}
 };
 
 CPackage::CPackage() {
-    fee = 0;
-    hours = 0;
-    addFee = 0;
-    id = 'x';
+    fee_ = 0;
+    hours_ = 0;
+    addFee_ = 0;
+    id_ = 0;
 }
 
-void CPackage::setPlan(float userFee, float userHours, int userAddFee, char userId) {
-    fee = userFee;
-    hours = userHours;
-    addFee = userAddFee;
-    id = userId;
-}
-
-CPackage::CPackage (char c) {
+void CPackage::setPlan(char c) {
     switch (c) {
-        case 'a':   fee = 9.95;
-            hours = 10;
-            addFee = 2;
-            id = c;
-            break;
-        case 'b':   fee = 14.95;
-            hours = 20;
-            addFee = 1;
-            id = c;
-            break;
-        case 'c':   fee = 19.95;
-            id = c;
-            break;
+        case 'a':   fee_ = 9.95;
+                    hours_ = 10;
+                    addFee_ = 2;
+                    id_ = c;
+                    break;
+        case 'b':   fee_ = 14.95;
+                    hours_ = 20;
+                    addFee_ = 1;
+                    id_ = c;
+                    break;
+        case 'c':   fee_ = 19.95;
+                    id_ = c;
+                    break;
         default:    cout << "The package does not exist.\n";
     }
 }
 
+CPackage::CPackage (char c, bool& packValidation) {
+    switch (c) {
+        case 'a':   fee_ = 9.95;
+                    hours_ = 10;
+                    addFee_ = 2;
+                    id_ = c;
+                    break;
+        case 'b':   fee_ = 14.95;
+                    hours_ = 20;
+                    addFee_ = 1;
+                    id_ = c;
+                    break;
+        case 'c':   fee_ = 19.95;
+                    id_ = c;
+                    break;
+        default:    packValidation = false;
+    }
+}
+
 float calcBill(int hours, CPackage package) {
-    float total = package.fee;
-    if (hours > package.hours && package.id != 'c') {
-        total += (hours - package.hours) * package.addFee;
+    float total = package.getFee();
+    if (hours > package.getHours() && package.getId() != 'c') {
+        total += (hours - package.getHours()) * package.getAddFee();
     }
     return total;
 }
@@ -94,8 +111,10 @@ bool validate(int hours, string m) {
 
 void calcSaving(CPackage package, int hours) {
     float savingB, savingC;
-    CPackage packageB('b');
-    CPackage packageC('c');
+    CPackage packageB;
+    packageB.setPlan('b');
+    CPackage packageC;
+    packageC.setPlan('c');
 
     float userTotal = calcBill(hours,package);
     float bTotal = calcBill(hours,packageB);
@@ -112,19 +131,14 @@ void calcSaving(CPackage package, int hours) {
 }
 
 int main () {
-    cout << "Do you want set your own plan?(y or n): ";
+    bool packValidation = true;
     string transfer;
-    char yn;
+    cout << "Which package did you purchase?(A, B or C): ";
+    char c;
     getline(cin,transfer);
-    stringstream(transfer) >> yn;
-
-    if(tolower(yn) == 'n'){
-        cout << "Which package did you purchase?(A, B or C): ";
-        char c;
-        getline(cin,transfer);
-        stringstream(transfer) >> c;
-        CPackage package(tolower(c));
-
+    stringstream(transfer) >> c;
+    CPackage package(tolower(c), packValidation);
+    if (packValidation) {
         cout << "How many hours did you use?: ";
         getline(cin,transfer);
         int hours;
@@ -135,52 +149,14 @@ int main () {
         string month;
         stringstream(transfer) >> month;
 
-        cout << "Your total due is $" << calcBill(hours, package) << endl;
-        if (!validate(hours,month)) {
-            cout << "You exceeded the limitation.\n" << endl;
+        if (validate(hours,month)) {
+            cout << "Your total due is $" << calcBill(hours, package) << endl;
+            calcSaving(package,hours);
+        } else {
+            cout << "You cannot exceed the time limitation.\n" << endl;
         }
-        calcSaving(package,hours);
-
     } else {
-        CPackage userPackage;
-        char userId;
-        float userFee;
-        float userHours;
-        int userAddFee;
-
-        cout << "Input the package ID: ";
-        getline(cin,transfer);
-        stringstream(transfer) >> userId;
-
-        cout << "Input the fee: ";
-        getline(cin,transfer);
-        stringstream(transfer) >> userFee;
-
-        cout << "Input the base hours: ";
-        getline(cin,transfer);
-        stringstream(transfer) >> userHours;
-
-        cout << "Input the additional fee: ";
-        getline(cin,transfer);
-        stringstream(transfer) >> userAddFee;
-
-        userPackage.setPlan(userFee, userHours, userAddFee, userId);
-
-        cout << "How many hours did you use?: ";
-        getline(cin,transfer);
-        int hours;
-        stringstream(transfer) >> hours;
-
-        cout << "Input the name of the month: ";
-        getline(cin,transfer);
-        string month;
-        stringstream(transfer) >> month;
-
-        cout << "Your total due is $" << calcBill(hours, userPackage) << endl;
-
-        if (!validate(hours,month)) {
-            cout << "You exceeded the limitation.\n" << endl;
-        }
+        cout << "The package does not exist.\n";
     }
     return 0;
 }
