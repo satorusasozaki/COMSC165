@@ -23,20 +23,24 @@ int PatientAccount::getHospitalFee() {
 
 int PatientAccount::printSurgeryList(ostream &st) {
     int totalCost = 0;
+    st << "=====================" << endl;
     st << "Surgeries\n";
     if (!surgeries.empty()) {
-        st << "=====================" << endl;
+        st << "---------------------" << endl;
         st << left << setw(13) << "Name";
         st << "|";
         st << setw(6) << "Cost" << endl;
-        st << "=====================" << endl;
+        st << "---------------------" << endl;
         for (Surgery item : surgeries) {
             st << left << setw(13) << item.name;
             st << "|";
             st << "$" << setw(6) << item.charge << endl;
             totalCost += item.getCharge();
         }
-        st << "Total Medication Cost: " << totalCost << endl;
+        st << left << setw(13) << "Total";
+        st << "|";
+        st << "$" << setw(6) << totalCost << endl;
+        st << "---------------------" << endl;
     } else {
         st << "There is no surgery item added yet\n";
     }
@@ -45,20 +49,24 @@ int PatientAccount::printSurgeryList(ostream &st) {
 
 int PatientAccount::printMedicationList(ostream &st) {
     int totalCost = 0;
+    st << "=====================" << endl;
     st << "Medications\n";
     if (!medications.empty()) {
-        st << "=====================" << endl;
+        st << "---------------------" << endl;
         st << left << setw(13) << "Name";
         st << "|";
         st << setw(6) << "Cost" << endl;
-        st << "=====================" << endl;
+        st << "---------------------" << endl;
         for (Pharmacy item : medications) {
             st << left << setw(13) << item.name;
             st << "|";
             st << "$" << setw(6) << item.charge << endl;
             totalCost += item.getCharge();
         }
-        st << "Total Medication Cost: " << totalCost << endl;
+        st << left << setw(13) << "Total";
+        st << "|";
+        st << "$" << setw(6) << totalCost << endl;
+        st << "---------------------" << endl;
     } else {
         st << "There is no surgery item added yet\n";
     }
