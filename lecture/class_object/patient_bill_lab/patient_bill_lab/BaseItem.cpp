@@ -20,7 +20,7 @@ int BaseItem::getCharge() {
     return charge;
 }
 
-void BaseItem::setItem(ostream & st) {
+void BaseItem::setItem(ostream &st) {
     switch (index) {
         case 1: name = items.at(0).name;
             charge = items.at(0).charge;

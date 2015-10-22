@@ -7,26 +7,19 @@
 using namespace std;
 
 
-//inline bool rangeValidation (unsigned long int listSize, int selectedNum) {
-//    return selectedNum <= listSize;
-//}
+bool rangeValidation(unsigned long int listSize, int selectedNum) {
+    return (0 < listSize) && (listSize >= selectedNum);
+}
 
-
-int askNumber(unsigned long int size, bool rangeValidation) {
+int askNumber() {
     string transfer;
     int num;
     getline(cin,transfer);
     stringstream(transfer) >> num;
-    
-    if (num <= size) {
-        rangeValidation = true;
-    } else {
-        rangeValidation = false;
-    }
     return num;
 }
 
-bool displayPatientName(vector<PatientAccount> &pVec) {
+void displayPatientName(vector<PatientAccount> &pVec) {
     if(!pVec.empty()) {
         for (int i=0; i<pVec.size(); i++) {
             cout << i+1 << ": " << pVec.at(i).name << endl;
@@ -34,19 +27,20 @@ bool displayPatientName(vector<PatientAccount> &pVec) {
     } else {
         cout << "The list is empty. Please add a patient\n";
     }
-    return pVec.empty();
 }
 
 void displayDetailedBill(vector<PatientAccount> pVec) {
     displayPatientName(pVec);
-    bool rangeValidation;
-    unsigned long int listSize = pVec.size();
-    int pIndex = askNumber(listSize, rangeValidation) - 1;
-    if (displayPatientName(pVec) && rangeValidation) {
-        PatientAccount p = pVec.at(pIndex);
-        p.printItems(cout);
+    cout << "Enter the patient number: ";
+    int paIndex = askNumber();
+    bool valid = rangeValidation(pVec.size(),paIndex);
+    if (!pVec.empty() && valid) {
+        PatientAccount pa = pVec.at(paIndex-1);
+        int sTotal = pa.printSurgeryList(cout);
+        int pTotal = pa.printMedicationList(cout);
+        cout << "Overall total is $" << sTotal+pTotal << endl;
     } else {
-        cout << "There is no patient numbered " << pIndex+1 << endl;
+        cout << "There is no patient numbered " << paIndex << endl;
     }
 }
 
@@ -77,32 +71,49 @@ void addNewPatient(vector<PatientAccount> &pVec) {
 
 void checkOutPatient(vector<PatientAccount> &pVec) {
     displayPatientName(pVec);
-    bool rangeValidation;
-    unsigned long int listSize = pVec.size();
-    int pIndex = askNumber(listSize, rangeValidation) - 1;
-    if (displayPatientName(pVec) && rangeValidation) {
-        pVec.erase(pVec.begin() + pIndex);
+    cout << "Enter the patient number: ";
+    int pIndex = askNumber();
+    bool valid = rangeValidation(pVec.size(),pIndex);
+    if (!pVec.empty() && valid) {
+        pVec.erase(pVec.begin() + pIndex-1);
         cout << "Patient " << pIndex+1 << " has been checked out\n";
     }  else {
-        cout << "There is no patient numbered " << pIndex+1 << endl;
+        cout << "There is no patient numbered " << pIndex << endl;
     }
 }
 
 void addSurgeryItem(vector<PatientAccount> &pVec) {
     displayPatientName(pVec);
-    bool rangeValidation;
-    unsigned long int listSize = pVec.size();
-    int pIndex = askNumber(listSize, rangeValidation) - 1;
-    if (displayPatientName(pVec) && rangeValidation) {
-        pVec.erase(pVec.begin() + pIndex);
-        cout << "Patient " << pIndex+1 << " has been checked out\n";
+    cout << "Enter the patient number: ";
+    int pIndex = askNumber();
+    bool valid = rangeValidation(pVec.size(),pIndex);
+    if (!pVec.empty() && valid) {
+        Surgery s;
+        s.printList(cout);
+        cout << "Enter the item number: ";
+        s.index = askNumber();
+        s.setItem(cout);
+        pVec.at(pIndex-1).surgeries.push_back(s);
     }  else {
-        cout << "There is no patient numbered " << pIndex+1 << endl;
+        cout << "There is no patient numbered " << pIndex << endl;
     }
 }
 
 void addPharmacyItem(vector<PatientAccount> &pVec) {
-    
+    displayPatientName(pVec);
+    cout << "Enter the patient number: ";
+    int pIndex = askNumber();
+    bool valid = rangeValidation(pVec.size(),pIndex);
+    if (!pVec.empty() && valid) {
+        Pharmacy p;
+        p.printList(cout);
+        cout << "Enter the item number: ";
+        p.index = askNumber();
+        p.setItem(cout);
+        pVec.at(pIndex-1).medications.push_back(p);
+    }  else {
+        cout << "There is no patient numbered " << pIndex << endl;
+    }
 }
 
 void displayMenu() {
@@ -113,13 +124,14 @@ void displayMenu() {
          << "5. Add pharmacy item to a patient’s account\n";
 }
 
-
 int main() {
     vector<PatientAccount> pVec;
-    
+    int choice;
     do{
         displayMenu();
-        switch (askNumber()) {
+        cout << "Enter the number in the list: ";
+        int choice = askNumber();
+        switch (choice) {
             case 1: addNewPatient(pVec);
                 break;
             case 2: displayDetailedBill(pVec);
@@ -128,51 +140,14 @@ int main() {
                 break;
             case 4: addSurgeryItem(pVec);
                 break;
-            case 5:
+            case 5: addPharmacyItem(pVec);
+                break;
             default:
                 break;
         }
-        
-        
-        
-        
-    }while(false);
+    }while(choice <= 5);
     
-    
-    
-    
-    PatientAccount pa;
-
-    Surgery s;
-    s.index = 3;
-    s.setItem(cout);
-    pa.surgeries.push_back(s);
-    cout << pa.surgeries.at(0).name << endl;
-    cout << pa.surgeries.at(0).charge << endl;
-    
-    Pharmacy p;
-    p.index = 3;
-    p.setItem(cout);
-    pa.medications.push_back(p);
-    cout << pa.medications.at(0).name << endl;
-    cout << pa.medications.at(0).charge << endl;
-    
-
-    addNewPatient(pVec);
-    displayDetailedBill(pVec);
-    s.printList(cout);
-    p.printList(cout);
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    cout << "Bye bye\n";
     return 0;
 }
 
