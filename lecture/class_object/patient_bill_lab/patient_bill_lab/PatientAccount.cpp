@@ -17,10 +17,9 @@ PatientAccount::PatientAccount(){
     ssn = 0;
 }
 
-//void PatientAccount::printListWithTable(ostream &st) {
-    
-
-
+int PatientAccount::getHospitalFee() {
+    return HOSPITAL_RATE_PER_DAY * days;
+}
 
 int PatientAccount::printSurgeryList(ostream &st) {
     int totalCost = 0;
@@ -44,7 +43,6 @@ int PatientAccount::printSurgeryList(ostream &st) {
     return totalCost;
 }
 
-
 int PatientAccount::printMedicationList(ostream &st) {
     int totalCost = 0;
     st << "Medications\n";
@@ -66,4 +64,5 @@ int PatientAccount::printMedicationList(ostream &st) {
     }
     return totalCost;
 }
+
 

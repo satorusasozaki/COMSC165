@@ -7,6 +7,7 @@
 #include "Pharmacy.h"
 using std::string;
 using std::ostream;
+const int HOSPITAL_RATE_PER_DAY = 50;
 
 class PatientAccount {
 public:
@@ -14,13 +15,13 @@ public:
     int age;
     string address;
     int ssn;
-    PatientAccount();
-    int printSurgeryList(ostream &st);
-    int printMedicationList(ostream &st);
+    int days;
     vector<Surgery> surgeries;
     vector<Pharmacy> medications;
-private:    
-    static int days;
+    PatientAccount();
+    int getHospitalFee();
+    int printSurgeryList(ostream &st);
+    int printMedicationList(ostream &st);
 };
 
 

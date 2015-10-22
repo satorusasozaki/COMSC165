@@ -38,7 +38,9 @@ void displayDetailedBill(vector<PatientAccount> pVec) {
         PatientAccount pa = pVec.at(paIndex-1);
         int sTotal = pa.printSurgeryList(cout);
         int pTotal = pa.printMedicationList(cout);
-        cout << "Overall total is $" << sTotal+pTotal << endl;
+        int hTotal = pa.getHospitalFee();
+        cout << "Hospital fee is $" << hTotal << endl;
+        cout << "Overall total is $" << (sTotal + pTotal + hTotal) << endl;
     } else {
         cout << "There is no patient numbered " << paIndex << endl;
     }
@@ -66,7 +68,14 @@ void addNewPatient(vector<PatientAccount> &pVec) {
     getline(cin,transfer);
     stringstream(transfer) >> num;
     p.ssn = num;
+    
+    cout << "How many days have you spent in this hospital?: ";
+    getline(cin,transfer);
+    stringstream(transfer) >> num;
+    p.days = num;
+    
     pVec.push_back(p);
+
 }
 
 void checkOutPatient(vector<PatientAccount> &pVec) {
