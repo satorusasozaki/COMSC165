@@ -2,10 +2,13 @@
 
 #include <string>
 #include <vector>
+#include <iomanip>
 
 using std::string;
 using std::vector;
 using std::endl;
+using std::setw;
+using std::left;
 
 PatientAccount::PatientAccount(){
     name = "";
@@ -14,16 +17,27 @@ PatientAccount::PatientAccount(){
     ssn = 0;
 }
 
+//void PatientAccount::printListWithTable(ostream &st) {
+    
+
+
+
 int PatientAccount::printSurgeryList(ostream &st) {
     int totalCost = 0;
-    st << "Surgery\n";
+    st << "Surgeries\n";
     if (!surgeries.empty()) {
+        st << "=====================" << endl;
+        st << left << setw(13) << "Name";
+        st << "|";
+        st << setw(6) << "Cost" << endl;
+        st << "=====================" << endl;
         for (Surgery item : surgeries) {
-            st << "name: " << item.getName() << "\t"
-            << "cost: " << item.getCharge() << endl;
+            st << left << setw(13) << item.name;
+            st << "|";
+            st << "$" << setw(6) << item.charge << endl;
             totalCost += item.getCharge();
         }
-        st << "Total Surgery Cost: " << totalCost << endl;
+        st << "Total Medication Cost: " << totalCost << endl;
     } else {
         st << "There is no surgery item added yet\n";
     }
@@ -31,14 +45,19 @@ int PatientAccount::printSurgeryList(ostream &st) {
 }
 
 
-
 int PatientAccount::printMedicationList(ostream &st) {
     int totalCost = 0;
     st << "Medications\n";
     if (!medications.empty()) {
+        st << "=====================" << endl;
+        st << left << setw(13) << "Name";
+        st << "|";
+        st << setw(6) << "Cost" << endl;
+        st << "=====================" << endl;
         for (Pharmacy item : medications) {
-            st << "name: " << item.getName() << "\t"
-            << "cost: " << item.getCharge() << endl;
+            st << left << setw(13) << item.name;
+            st << "|";
+            st << "$" << setw(6) << item.charge << endl;
             totalCost += item.getCharge();
         }
         st << "Total Medication Cost: " << totalCost << endl;

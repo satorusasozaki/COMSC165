@@ -19,9 +19,7 @@ public:
     int printMedicationList(ostream &st);
     vector<Surgery> surgeries;
     vector<Pharmacy> medications;
-private:
-    //	Will keep track of patient’s chargeable items, mainly surgeries and pharmacy items
-    
+private:    
     static int days;
 };
 
