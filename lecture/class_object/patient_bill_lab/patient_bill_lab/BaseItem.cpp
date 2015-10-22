@@ -8,14 +8,8 @@ using std::ostream;
 using std::endl;
 
 BaseItem::BaseItem() {
-    initList();
     name = "";
     charge = 0;
-}
-
-void BaseItem::initList() {
-
-    
 }
 
 string BaseItem::getName() {
@@ -48,11 +42,12 @@ void BaseItem::setItem(ostream & st) {
     }
 }
 
-void BaseItem::printList(ostream & st) {
+void BaseItem::printList(ostream &st) {
     int i = 1;
     for (Item item : items) {
-        st << i << ":\n"
-        << "name: " << item.name << endl
+        st << i << ". "
+        << "name: " << item.name << "\t"
         << "charge: " << item.charge << endl;
+        i++;
     }
 }

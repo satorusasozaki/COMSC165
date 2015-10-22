@@ -16,10 +16,11 @@ public:
 	int ssn;
 	PatientAccount();
 	void printItems(ostream &st);
+    vector<Surgery> surgeries;
+    vector<Pharmacy> medications;
 private:
 //	Will keep track of patient’s chargeable items, mainly surgeries and pharmacy items
-	vector<Surgery> surgeries;
-	vector<Pharmacy> medications;
+
 	static int days;
 };
 

@@ -1,6 +1,7 @@
 #ifndef Surgery_h
 #define Surgery_h
 
+#include "BaseItem.h"
 #include <string>
 #include <vector>
 #include <ostream>
@@ -8,23 +9,10 @@ using std::string;
 using std::vector;
 using std::ostream;
 
-struct surgeryItem {
-	string name;
-	int charge;
-};
-
-class Surgery {
+class Surgery : public BaseItem {
 public:
 	Surgery();
-	string getName();
-	int getCharge();
-	void setSurgery(ostream & st);
-	void printList(ostream & st);
-	int index;
 private:
-	string name;
-	int charge;
-	vector<surgeryItem> items;
 	void initList();
 };
 

@@ -7,11 +7,7 @@
 using std::string;
 using std::vector;
 using std::ostream;
-
-struct Item {
-    string name;
-    int charge;
-};
+using std::endl;
 
 class BaseItem {
 public:
@@ -20,12 +16,14 @@ public:
     int getCharge();
     void setItem(ostream & st);
     void printList(ostream & st);
+    struct Item {
+        string name;
+        int charge;
+    };
     int index;
-private:
     string name;
     int charge;
     vector<Item> items;
-    void initList();
 };
 
 #endif

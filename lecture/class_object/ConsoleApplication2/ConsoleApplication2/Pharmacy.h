@@ -1,36 +1,20 @@
 #ifndef Pharmacy_h
 #define Pharmacy_h
 
+#include "BaseItem.h"
 #include <string>
 #include <vector>
 #include <ostream>
 using std::string;
 using std::vector;
 using std::ostream;
-struct medicationItem {
-	string name;
-	int charge;
-};
 
-class Pharmacy {
+class Pharmacy : public BaseItem {
 public:
-	Pharmacy();
-	string getName();
-	int getCharge();
-	void setMedication(ostream & st);
-	void printList(ostream & st);
-	int index;
+    Pharmacy();
 private:
-	string name;
-	int charge;
-	vector<medicationItem> items;
-	void initList();
+    void initList();
 };
-
-
-
-
-
 
 #endif 
 

@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		600252BB1BD58E36001C3766 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 600252BA1BD58E36001C3766 /* main.cpp */; };
-		600252C71BD58E67001C3766 /* PatientAccount.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 600252C11BD58E67001C3766 /* PatientAccount.cpp */; settings = {ASSET_TAGS = (); }; };
-		600252C81BD58E67001C3766 /* Pharmacy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 600252C31BD58E67001C3766 /* Pharmacy.cpp */; settings = {ASSET_TAGS = (); }; };
-		600252C91BD58E67001C3766 /* Surgery.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 600252C51BD58E67001C3766 /* Surgery.cpp */; settings = {ASSET_TAGS = (); }; };
 		600252CD1BD59049001C3766 /* BaseItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 600252CB1BD59049001C3766 /* BaseItem.cpp */; settings = {ASSET_TAGS = (); }; };
+		600252D41BD59656001C3766 /* PatientAccount.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 600252CE1BD59656001C3766 /* PatientAccount.cpp */; settings = {ASSET_TAGS = (); }; };
+		600252D51BD59656001C3766 /* Pharmacy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 600252D01BD59656001C3766 /* Pharmacy.cpp */; settings = {ASSET_TAGS = (); }; };
+		600252D61BD59656001C3766 /* Surgery.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 600252D21BD59656001C3766 /* Surgery.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,14 +29,14 @@
 /* Begin PBXFileReference section */
 		600252B71BD58E36001C3766 /* patient_bill_lab */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = patient_bill_lab; sourceTree = BUILT_PRODUCTS_DIR; };
 		600252BA1BD58E36001C3766 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		600252C11BD58E67001C3766 /* PatientAccount.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PatientAccount.cpp; path = ../../../Dropbox/COMSC165/ConsoleApplication2/ConsoleApplication2/PatientAccount.cpp; sourceTree = "<group>"; };
-		600252C21BD58E67001C3766 /* PatientAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PatientAccount.h; path = ../../../Dropbox/COMSC165/ConsoleApplication2/ConsoleApplication2/PatientAccount.h; sourceTree = "<group>"; };
-		600252C31BD58E67001C3766 /* Pharmacy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Pharmacy.cpp; path = ../../../Dropbox/COMSC165/ConsoleApplication2/ConsoleApplication2/Pharmacy.cpp; sourceTree = "<group>"; };
-		600252C41BD58E67001C3766 /* Pharmacy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pharmacy.h; path = ../../../Dropbox/COMSC165/ConsoleApplication2/ConsoleApplication2/Pharmacy.h; sourceTree = "<group>"; };
-		600252C51BD58E67001C3766 /* Surgery.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Surgery.cpp; path = ../../../Dropbox/COMSC165/ConsoleApplication2/ConsoleApplication2/Surgery.cpp; sourceTree = "<group>"; };
-		600252C61BD58E67001C3766 /* Surgery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Surgery.h; path = ../../../Dropbox/COMSC165/ConsoleApplication2/ConsoleApplication2/Surgery.h; sourceTree = "<group>"; };
 		600252CA1BD58FF4001C3766 /* BaseItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseItem.h; sourceTree = "<group>"; };
 		600252CB1BD59049001C3766 /* BaseItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseItem.cpp; sourceTree = "<group>"; };
+		600252CE1BD59656001C3766 /* PatientAccount.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PatientAccount.cpp; path = ../../ConsoleApplication2/ConsoleApplication2/PatientAccount.cpp; sourceTree = "<group>"; };
+		600252CF1BD59656001C3766 /* PatientAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PatientAccount.h; path = ../../ConsoleApplication2/ConsoleApplication2/PatientAccount.h; sourceTree = "<group>"; };
+		600252D01BD59656001C3766 /* Pharmacy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Pharmacy.cpp; path = ../../ConsoleApplication2/ConsoleApplication2/Pharmacy.cpp; sourceTree = "<group>"; };
+		600252D11BD59656001C3766 /* Pharmacy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pharmacy.h; path = ../../ConsoleApplication2/ConsoleApplication2/Pharmacy.h; sourceTree = "<group>"; };
+		600252D21BD59656001C3766 /* Surgery.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Surgery.cpp; path = ../../ConsoleApplication2/ConsoleApplication2/Surgery.cpp; sourceTree = "<group>"; };
+		600252D31BD59656001C3766 /* Surgery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Surgery.h; path = ../../ConsoleApplication2/ConsoleApplication2/Surgery.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,14 +69,14 @@
 		600252B91BD58E36001C3766 /* patient_bill_lab */ = {
 			isa = PBXGroup;
 			children = (
-				600252C11BD58E67001C3766 /* PatientAccount.cpp */,
-				600252C21BD58E67001C3766 /* PatientAccount.h */,
-				600252C41BD58E67001C3766 /* Pharmacy.h */,
-				600252C31BD58E67001C3766 /* Pharmacy.cpp */,
+				600252CE1BD59656001C3766 /* PatientAccount.cpp */,
+				600252CF1BD59656001C3766 /* PatientAccount.h */,
+				600252D01BD59656001C3766 /* Pharmacy.cpp */,
+				600252D11BD59656001C3766 /* Pharmacy.h */,
+				600252D21BD59656001C3766 /* Surgery.cpp */,
+				600252D31BD59656001C3766 /* Surgery.h */,
 				600252CA1BD58FF4001C3766 /* BaseItem.h */,
 				600252CB1BD59049001C3766 /* BaseItem.cpp */,
-				600252C61BD58E67001C3766 /* Surgery.h */,
-				600252C51BD58E67001C3766 /* Surgery.cpp */,
 				600252BA1BD58E36001C3766 /* main.cpp */,
 			);
 			path = patient_bill_lab;
@@ -138,10 +138,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				600252C81BD58E67001C3766 /* Pharmacy.cpp in Sources */,
-				600252C91BD58E67001C3766 /* Surgery.cpp in Sources */,
 				600252BB1BD58E36001C3766 /* main.cpp in Sources */,
-				600252C71BD58E67001C3766 /* PatientAccount.cpp in Sources */,
+				600252D41BD59656001C3766 /* PatientAccount.cpp in Sources */,
+				600252D61BD59656001C3766 /* Surgery.cpp in Sources */,
+				600252D51BD59656001C3766 /* Pharmacy.cpp in Sources */,
 				600252CD1BD59049001C3766 /* BaseItem.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,6 +259,7 @@
 				600252C01BD58E36001C3766 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
