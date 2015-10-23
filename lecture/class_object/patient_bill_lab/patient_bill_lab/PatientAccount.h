@@ -1,3 +1,14 @@
+/***********************************
+Problem: Class and Object lab
+Description: You are to write a program that computes a patient s bill for a hospital stay.
+Name: Satoru Sasozaki
+ID: 1516331
+Date: 10/22/2015
+Status: Complete
+
+PatientAccount.h
+***********************************/
+
 #ifndef Employee_h
 #define Employee_h
 

@@ -1,3 +1,15 @@
+/***********************************
+Problem: Class and Object lab
+Description: You are to write a program that computes a patient s bill for a hospital stay.
+Name: Satoru Sasozaki
+ID: 1516331
+Date: 10/22/2015
+Status: Complete
+ 
+main.cpp
+***********************************/
+
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -5,7 +17,6 @@
 #include "Pharmacy.h"
 #include "Surgery.h"
 using namespace std;
-
 
 bool rangeValidation(unsigned long int listSize, int selectedNum) {
     return (0 < listSize) && (listSize >= selectedNum);

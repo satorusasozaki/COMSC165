@@ -1,5 +1,15 @@
-#include "PatientAccount.h"
+/***********************************
+Problem: Class and Object lab
+Description: You are to write a program that computes a patient s bill for a hospital stay.
+Name: Satoru Sasozaki
+ID: 1516331
+Date: 10/22/2015
+Status: Complete
 
+PatientAccount.cpp
+***********************************/
+
+#include "PatientAccount.h"
 #include <string>
 #include <vector>
 #include <iomanip>
@@ -85,7 +95,7 @@ void PatientAccount::printDetail(ostream &st) {
     st << "=====================" << endl;
     st << "Overall Total" << endl;
     st << "---------------------" << endl;
-    st << right << setw(19) << "$" << surgeryCost + medicationCost + hospitalFee << endl;
+    st << "$" << right << setw(20)  << surgeryCost + medicationCost + hospitalFee << endl;
 }
 
 
