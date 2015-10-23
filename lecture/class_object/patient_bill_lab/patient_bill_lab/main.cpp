@@ -42,7 +42,7 @@ void displayDetailedBill(vector<PatientAccount> pVec) {
     bool canProceed = askAndValidate(pVec,paIndex);
     if (canProceed) {
         PatientAccount pa = pVec.at(paIndex-1);
-        int sTotal = pa.printSurgeryList(cout);
+        int sTotal = pa.printSurgeryList<Surgery>(cout,pa.surgeries);
         int pTotal = pa.printMedicationList(cout);
         int hTotal = pa.getHospitalFee();
         cout << "Hospital fee is $" << hTotal << endl;

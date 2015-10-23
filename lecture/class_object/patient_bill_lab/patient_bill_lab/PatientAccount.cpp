@@ -21,17 +21,17 @@ int PatientAccount::getHospitalFee() {
     return HOSPITAL_RATE_PER_DAY * days;
 }
 
-int PatientAccount::printSurgeryList(ostream &st) {
+template <class T> int PatientAccount::printSurgeryList(ostream &st, vector<T> items) {
     int totalCost = 0;
     st << "=====================" << endl;
     st << "Surgeries\n";
-    if (!surgeries.empty()) {
+    if (!items.empty()) {
         st << "---------------------" << endl;
         st << left << setw(13) << "Name";
         st << "|";
         st << setw(6) << "Cost" << endl;
         st << "---------------------" << endl;
-        for (Surgery item : surgeries) {
+        for (T item : items) {
             st << left << setw(13) << item.name;
             st << "|";
             st << "$" << setw(6) << item.charge << endl;
