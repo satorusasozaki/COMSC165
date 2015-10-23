@@ -20,12 +20,8 @@ public:
     vector<Pharmacy> medications;
     PatientAccount();
     int getHospitalFee();
-    template <class T> int printSurgeryList(ostream &st, vector<T> items);
-    int printMedicationList(ostream &st);
+    void printDetail(ostream &st);
 };
-
-
-
 
 #endif
 

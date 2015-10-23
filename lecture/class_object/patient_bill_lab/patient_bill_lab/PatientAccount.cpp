@@ -9,6 +9,7 @@ using std::vector;
 using std::endl;
 using std::setw;
 using std::left;
+using std::right;
 
 PatientAccount::PatientAccount(){
     name = "";
@@ -21,34 +22,31 @@ int PatientAccount::getHospitalFee() {
     return HOSPITAL_RATE_PER_DAY * days;
 }
 
-template <class T> int PatientAccount::printSurgeryList(ostream &st, vector<T> items) {
-    int totalCost = 0;
+void PatientAccount::printDetail(ostream &st) {
+    int surgeryCost = 0;
     st << "=====================" << endl;
     st << "Surgeries\n";
-    if (!items.empty()) {
+    if (!surgeries.empty()) {
         st << "---------------------" << endl;
         st << left << setw(13) << "Name";
         st << "|";
         st << setw(6) << "Cost" << endl;
         st << "---------------------" << endl;
-        for (T item : items) {
+        for (Surgery item : surgeries) {
             st << left << setw(13) << item.name;
             st << "|";
             st << "$" << setw(6) << item.charge << endl;
-            totalCost += item.getCharge();
+            surgeryCost += item.getCharge();
         }
+        st << "---------------------" << endl;
         st << left << setw(13) << "Total";
         st << "|";
-        st << "$" << setw(6) << totalCost << endl;
-        st << "---------------------" << endl;
+        st << "$" << setw(6) << surgeryCost << endl;
     } else {
         st << "There is no surgery item added yet\n";
     }
-    return totalCost;
-}
-
-int PatientAccount::printMedicationList(ostream &st) {
-    int totalCost = 0;
+    
+    int medicationCost = 0;
     st << "=====================" << endl;
     st << "Medications\n";
     if (!medications.empty()) {
@@ -61,16 +59,33 @@ int PatientAccount::printMedicationList(ostream &st) {
             st << left << setw(13) << item.name;
             st << "|";
             st << "$" << setw(6) << item.charge << endl;
-            totalCost += item.getCharge();
+            medicationCost += item.getCharge();
         }
+        st << "---------------------" << endl;
         st << left << setw(13) << "Total";
         st << "|";
-        st << "$" << setw(6) << totalCost << endl;
-        st << "---------------------" << endl;
+        st << "$" << setw(6) << medicationCost << endl;
+
     } else {
         st << "There is no surgery item added yet\n";
     }
-    return totalCost;
+    
+    st << "=====================" << endl;
+    st << "Hospital" << endl;
+    st << "---------------------" << endl;
+    st << left << setw(13) << "Days";
+    st << "|";
+    st << setw(6) << "Cost" << endl;
+    st << "---------------------" << endl;
+    st << left << setw(13) << days;
+    st << "|";
+    int hospitalFee = getHospitalFee();
+    st << "$" << setw(6) << hospitalFee << endl;
+    
+    st << "=====================" << endl;
+    st << "Overall Total" << endl;
+    st << "---------------------" << endl;
+    st << right << setw(19) << "$" << surgeryCost + medicationCost + hospitalFee << endl;
 }
 
 
