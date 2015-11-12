@@ -25,6 +25,8 @@ double max(double num1, double num2, double num3)
     return max(max(num1, num2), num3);
 }
 
+
+
 int main()
 {
     // Invoke the max function with int parameters
