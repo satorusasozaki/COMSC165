@@ -1,8 +1,13 @@
+/*
+Problem: linked list lab 
+Description:
+3. List Copy Constructor4. List Reverse
+Name: Satoru Sasozaki
+*/
+
 #include <iostream>  
 #include "NumberList.h"
 using namespace std;
-
-
 
 // copy constructor
 NumberList::NumberList(const NumberList& original) {
