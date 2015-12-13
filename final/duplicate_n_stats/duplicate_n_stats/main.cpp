@@ -23,7 +23,7 @@ Data::Data() {
     setValue(0);
     setTimes(0);
 }
-Data::~Data() {
+Data::~Data() { 
 }
 
 int main() {
