@@ -21,82 +21,67 @@ public:
 
 Data::Data() {
     setValue(0);
-    setTimes(0);
+    setTimes(1);
 }
 Data::~Data() { 
 }
 
 int main() {
     vector<Data> numList;
-    string filename("/Users/satoru/Dropbox/COMSC165/final/duplicate_n_stats/duplicate_n_stats/in.txt");
+    string filename("/Users/satoru/Dropbox/COMSC165/final/duplicate_n_stats/duplicate_n_stats/Integers.txt");
     fstream in(filename,ios::in);
     if(in){
         string transfer;
-        int count = 0;
-        while(getline(in,transfer)) {
-            int buffer;
+        int buffer;
+        int max = 0;
+        int min = 0;
+        if(getline(in,transfer)) {
             stringstream(transfer) >> buffer;
             Data data;
             data.setValue(buffer);
-            if (count==0) {
-                numList.push_back(data);
-            }
-            if (count==1) {
-                if (numList.at(0).getValue() > data.getValue()) {
-                    numList.insert(numList.begin(), data);
-                } else if (numList.at(0).getValue() == data.getValue()) {
-                    int times = numList.at(0).getTimes();
-                    times++;
-                    numList.at(0).setTimes(times);
-                } else {
-                    numList.push_back(data);
-                }
-            }
-            int posToInsert = 0;
-            for (int i=0; i<numList.size()-1; i++) {
-                if (data.getValue() > numList.at(i).getValue() && data.getValue() < numList.at(i+1).getValue()  ) {
-                    posToInsert = i;
-                } else if (data.getValue() == numList.at(i).getValue() ) {
-                    int times = numList.at(i).getTimes();
-                    times++;
-                    numList.at(i).setTimes(times);
-                } else {
-//                    numList.push_back(data);
-                }
-                
-            }
-                
-            numList.insert(numList.begin()+posToInsert, data);
-
-            
-            /*
-            int posToInsert=0;
-            
-            for (int i=0; i<numList.size()-1/* && data.getValue() >= numList.at(i).getValue() ; i++) {
-                if (i==0) {
-                  numList.push_back(data);
-                } else if (i==1) {
-                    if (data.getValue() < numList.at(i).getValue()) {
-                        numList.insert(numList.begin(), data);
-                    } else {
-                        numList.push_back(data);
-                    }
-                    
-                } else if (data.getValue() >= numList.at(i).getValue() && data.getValue() < numList.at(i+1).getValue()) {
-                    posToInsert = i;
-                }
-                if (data.getValue() == numList.at(i).getValue()) {
-                    int times = numList.at(i).getTimes();
-                    times++;
-                    numList.at(i).setValue(times);
-                }
-            }
-            cout << "posToInsert " << posToInsert << endl;
-            numList.insert(numList.begin()+posToInsert, data);
-            */
-            count++;
+            numList.push_back(data);
+            max = buffer;
+            min = buffer;
         }
         
+        while(getline(in,transfer)) {
+            stringstream(transfer) >> buffer;
+            Data data;
+            data.setValue(buffer);
+            // Duplicated values are not added to list
+            if (data.getValue() >= max) {
+                if (data.getValue() == max) {
+                    int times = numList.back().getTimes();
+                    times++;
+                    numList.back().setTimes(times);
+                } else {
+                    numList.push_back(data);
+                    max = data.getValue();
+                }
+            } else if (data.getValue() <= min) {
+                if (data.getValue() == min) {
+                    int times = numList.front().getTimes();
+                    times++;
+                    numList.front().setTimes(times);
+                } else {
+                    numList.insert(numList.begin(),data);
+                    min = data.getValue();
+                }
+            } else {
+                bool isFound = false;
+                for (int i=0; i<numList.size() && !isFound; i++) {
+                    if (numList.at(i).getValue() == data.getValue()) {
+                        int times = numList.at(i).getTimes();
+                        times++;
+                        numList.at(i).setTimes(times);
+                        isFound = true;
+                    } else if (numList.at(i).getValue() > data.getValue()) {
+                        numList.insert(numList.begin()+i, data);
+                        isFound = true;
+                    }
+                }
+            }
+        }
     } else {
         cout << "Failed to open\n";
     }
@@ -104,7 +89,9 @@ int main() {
     in.close();
     
     for (int i=0; i<numList.size(); i++) {
-        cout << numList.at(i).getValue() << endl;
+        if (numList.at(i).getTimes() > 3) {
+            cout << setw(10) << left << numList.at(i).getValue() << setw(3) << left << numList.at(i).getTimes() << " occured" <<endl;
+        }
     }
     
     

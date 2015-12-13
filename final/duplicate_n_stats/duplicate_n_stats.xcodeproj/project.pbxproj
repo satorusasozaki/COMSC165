@@ -23,9 +23,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		607563A31C1E289900C5260F /* Integers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Integers.txt; sourceTree = "<group>"; };
 		60BED8931C1D1A030018DE73 /* duplicate_n_stats */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = duplicate_n_stats; sourceTree = BUILT_PRODUCTS_DIR; };
 		60BED8961C1D1A030018DE73 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		60BED89D1C1D232A0018DE73 /* in.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = in.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +58,7 @@
 		60BED8951C1D1A030018DE73 /* duplicate_n_stats */ = {
 			isa = PBXGroup;
 			children = (
-				60BED89D1C1D232A0018DE73 /* in.txt */,
+				607563A31C1E289900C5260F /* Integers.txt */,
 				60BED8961C1D1A030018DE73 /* main.cpp */,
 			);
 			path = duplicate_n_stats;
@@ -239,6 +239,7 @@
 				60BED89C1C1D1A030018DE73 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
