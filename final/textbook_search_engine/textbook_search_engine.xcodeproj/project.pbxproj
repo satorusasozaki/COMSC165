@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		60F31E071C1E483B00976713 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60F31E061C1E483B00976713 /* main.cpp */; };
 		60F31E0F1C1E48EC00976713 /* Toggles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60F31E0E1C1E48EC00976713 /* Toggles.cpp */; };
+		60F31E121C1E54B000976713 /* Toggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60F31E111C1E54B000976713 /* Toggle.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		60F31E061C1E483B00976713 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		60F31E0D1C1E48E000976713 /* Toggles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toggles.h; sourceTree = "<group>"; };
 		60F31E0E1C1E48EC00976713 /* Toggles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Toggles.cpp; sourceTree = "<group>"; };
+		60F31E101C1E54A800976713 /* Toggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toggle.h; sourceTree = "<group>"; };
+		60F31E111C1E54B000976713 /* Toggle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Toggle.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				60F31E061C1E483B00976713 /* main.cpp */,
+				60F31E101C1E54A800976713 /* Toggle.h */,
+				60F31E111C1E54B000976713 /* Toggle.cpp */,
 				60F31E0D1C1E48E000976713 /* Toggles.h */,
 				60F31E0E1C1E48EC00976713 /* Toggles.cpp */,
 			);
@@ -123,6 +128,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60F31E121C1E54B000976713 /* Toggle.cpp in Sources */,
 				60F31E071C1E483B00976713 /* main.cpp in Sources */,
 				60F31E0F1C1E48EC00976713 /* Toggles.cpp in Sources */,
 			);
