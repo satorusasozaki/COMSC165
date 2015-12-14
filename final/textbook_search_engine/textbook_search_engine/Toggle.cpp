@@ -15,3 +15,8 @@ void Toggle::turn() {
     message = sentence + (button ? "ON" : "OFF");
     
 }
+
+
+Toggle::~Toggle() {
+    
+}
