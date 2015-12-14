@@ -21,7 +21,7 @@ public:
 
 Data::Data() {
     setValue(0);
-    setTimes(1);
+    setTimes(0);
 }
 Data::~Data() { 
 }
@@ -30,42 +30,43 @@ int main() {
     vector<Data> numList;
     string filename("/Users/satoru/Dropbox/COMSC165/final/duplicate_n_stats/duplicate_n_stats/Integers.txt");
     fstream in(filename,ios::in);
+    int totalCount = 0;
     if(in){
         string transfer;
         int buffer;
-        int max = 0;
-        int min = 0;
         if(getline(in,transfer)) {
             stringstream(transfer) >> buffer;
             Data data;
             data.setValue(buffer);
             numList.push_back(data);
-            max = buffer;
-            min = buffer;
+            totalCount++;
         }
         
         while(getline(in,transfer)) {
+            totalCount++;
             stringstream(transfer) >> buffer;
             Data data;
             data.setValue(buffer);
+            int times = data.getTimes();
+            times++;
+            data.setTimes(times);
+            
             // Duplicated values are not added to list
-            if (data.getValue() >= max) {
-                if (data.getValue() == max) {
+            if (data.getValue() >= numList.back().getValue()) {
+                if (data.getValue() == numList.back().getValue()) {
                     int times = numList.back().getTimes();
                     times++;
                     numList.back().setTimes(times);
                 } else {
                     numList.push_back(data);
-                    max = data.getValue();
                 }
-            } else if (data.getValue() <= min) {
-                if (data.getValue() == min) {
+            } else if (data.getValue() <= numList.front().getValue()) {
+                if (data.getValue() == numList.front().getValue()) {
                     int times = numList.front().getTimes();
                     times++;
                     numList.front().setTimes(times);
                 } else {
                     numList.insert(numList.begin(),data);
-                    min = data.getValue();
                 }
             } else {
                 bool isFound = false;
@@ -88,12 +89,26 @@ int main() {
     
     in.close();
     
-    for (int i=0; i<numList.size(); i++) {
-        if (numList.at(i).getTimes() > 3) {
-            cout << setw(10) << left << numList.at(i).getValue() << setw(3) << left << numList.at(i).getTimes() << " occured" <<endl;
+    fstream out("/Users/satoru/Dropbox/COMSC165/final/duplicate_n_stats/duplicate_n_stats/out.txt", ios::out);
+    if (out) {
+        out << "Total: " << totalCount << endl
+            << "Min value: " << numList.front().getValue() << endl
+            << "Max value: " << numList.back().getValue() << endl
+            << "Duplicated values: " << endl;
+        for (int i=0; i<numList.size(); i++) {
+            if (numList.at(i).getTimes() > 1) {
+                out << setw(10) << left << numList.at(i).getValue() << setw(3) << left << numList.at(i).getTimes() << " occured" <<endl;
+            }
         }
+        out << "Non-Duplicated values: " << endl;
+        for (int i=0; i<numList.size(); i++) {
+            if (numList.at(i).getTimes() == 1) {
+                out << numList.at(i).getValue() << endl;
+            }
+        }
+    } else {
+        cout << "Failed to open out file\n";
     }
-    
     
     return 0;
     
